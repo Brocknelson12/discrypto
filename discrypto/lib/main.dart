@@ -585,10 +585,10 @@ class PathExample extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<PathExample> createState() => _PathExampleState();
+  _PathExampleState createState() => _PathExampleState();
 }
 
-class _PathExampleState extends State<PathExample> {
+class _PathExampleState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
