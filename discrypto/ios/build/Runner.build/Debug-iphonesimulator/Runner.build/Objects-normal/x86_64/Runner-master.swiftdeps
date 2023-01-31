@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
+options: "2b5e44d00e5aaf869086c162b892b3a75ce712ed92a4b0cc36331011896ffae3"
+build_start_time: [1675181986, 612607002]
+build_end_time: [1675181986, 843771934]
+inputs:
+  "/Users/brocket12/Desktop/github/discrypto/discrypto/ios/Runner/AppDelegate.swift": [1673971074, 102448463]

@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/Runner/GeneratedPluginRegistrant.m \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/Runner/GeneratedPluginRegistrant.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Modules/module.modulemap \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterViewController.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPluginAppLifeCycleDelegate.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterHeadlessDartRunner.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngineGroup.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterEngine.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterDartProject.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCallbackCache.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterTexture.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlatformViews.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterCodecs.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterChannels.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterBinaryMessenger.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterPlugin.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterMacros.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/FlutterAppDelegate.h \
+  /Users/brocket12/Desktop/github/discrypto/discrypto/ios/build/Debug-iphonesimulator/Flutter.framework/Headers/Flutter.h

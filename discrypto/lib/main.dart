@@ -11,7 +11,7 @@ Map<String, List<Map<String, Object>>> discs = {
     {
       "name": "avair",
       "type": "Putter",
-      "speed": 2,
+      "speed": 5,
       "glide": 3,
       "turn": 0,
       "fade": 1,
@@ -606,10 +606,11 @@ class PathPainter extends CustomPainter {
       ..strokeWidth = 8.0;
 
     // Moves starting point to the center of the screen
-    // path.moveTo(-300, -300);
+
     // print(canvas.toString());
     Path path = Path();
-    path.moveTo(0, 560);
+    path.moveTo(-300, -300);
+    // path.moveTo(0, 560);
 
 // below is the code to add all the paths to the display
     // for (var element in discs["discs"]!) {
