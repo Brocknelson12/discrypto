@@ -609,7 +609,7 @@ class PathPainter extends CustomPainter {
 
     // print(canvas.toString());
     Path path = Path();
-    path.moveTo(-300, -300);
+    path.moveTo(size.width / 2, 580);
     // path.moveTo(0, 560);
 
 // below is the code to add all the paths to the display
@@ -627,7 +627,8 @@ class PathPainter extends CustomPainter {
     var destroyer = discs["discs"]!.elementAt(_currentIndex)["path"]
         as List<Map<String, num>>;
     for (var i = 0; i < destroyer.length; i++) {
-      path.lineTo(-destroyer[i]['x']! * 100, 560 - destroyer[i]['y']! * 1);
+      path.lineTo((size.width / 2) + (-destroyer[i]['x']! * 100),
+          580 - destroyer[i]['y']! * 1);
     }
     canvas.drawPath(path, paint);
 
@@ -638,11 +639,11 @@ class PathPainter extends CustomPainter {
     var turn = discs["discs"]!.elementAt(_currentIndex)["turn"] as int;
     var fade = discs["discs"]!.elementAt(_currentIndex)["fade"] as int;
 
-    marks(name.toString(), Offset(0, 0), canvas, 40.0);
-    marks(speed.toString(), Offset(160, 20), canvas, 40.0);
-    marks(glide.toString(), Offset(160, 60), canvas, 40.0);
-    marks(turn.toString(), Offset(160, 100), canvas, 40.0);
-    marks(fade.toString(), Offset(160, 140), canvas, 40.0);
+    marks(name.toString(), Offset(size.width / 2, 10), canvas, 40.0);
+    marks(speed.toString(), Offset(5 * size.width / 6, 20), canvas, 40.0);
+    marks(glide.toString(), Offset(5 * size.width / 6, 60), canvas, 40.0);
+    marks(turn.toString(), Offset(5 * size.width / 6, 100), canvas, 40.0);
+    marks(fade.toString(), Offset(5 * size.width / 6, 140), canvas, 40.0);
 
     Paint paint2 = Paint()
       ..color = Colors.black
@@ -651,20 +652,20 @@ class PathPainter extends CustomPainter {
 
     // creating grid below
     // y axis
-    canvas.drawLine(Offset(-205, 40), Offset(-180, 40), paint2);
-    canvas.drawLine(Offset(-205, 80), Offset(-180, 80), paint2);
-    canvas.drawLine(Offset(-205, 120), Offset(-180, 120), paint2);
-    canvas.drawLine(Offset(-205, 160), Offset(-180, 160), paint2);
-    canvas.drawLine(Offset(-205, 200), Offset(-180, 200), paint2);
-    canvas.drawLine(Offset(-205, 240), Offset(-180, 240), paint2);
-    canvas.drawLine(Offset(-205, 280), Offset(-180, 280), paint2);
-    canvas.drawLine(Offset(-205, 320), Offset(-180, 320), paint2);
-    canvas.drawLine(Offset(-205, 360), Offset(-180, 360), paint2);
-    canvas.drawLine(Offset(-205, 400), Offset(-180, 400), paint2);
-    canvas.drawLine(Offset(-205, 440), Offset(-180, 440), paint2);
-    canvas.drawLine(Offset(-205, 480), Offset(-180, 480), paint2);
-    canvas.drawLine(Offset(-205, 520), Offset(-180, 520), paint2);
-    canvas.drawLine(Offset(-205, 560), Offset(-180, 560), paint2);
+    canvas.drawLine(Offset(0, 40), Offset(15, 40), paint2);
+    canvas.drawLine(Offset(0, 80), Offset(15, 80), paint2);
+    canvas.drawLine(Offset(0, 120), Offset(15, 120), paint2);
+    canvas.drawLine(Offset(0, 160), Offset(15, 160), paint2);
+    canvas.drawLine(Offset(0, 200), Offset(15, 200), paint2);
+    canvas.drawLine(Offset(0, 240), Offset(15, 240), paint2);
+    canvas.drawLine(Offset(0, 280), Offset(15, 280), paint2);
+    canvas.drawLine(Offset(0, 320), Offset(15, 320), paint2);
+    canvas.drawLine(Offset(0, 360), Offset(15, 360), paint2);
+    canvas.drawLine(Offset(0, 400), Offset(15, 400), paint2);
+    canvas.drawLine(Offset(0, 440), Offset(15, 440), paint2);
+    canvas.drawLine(Offset(0, 480), Offset(15, 480), paint2);
+    canvas.drawLine(Offset(0, 520), Offset(15, 520), paint2);
+    canvas.drawLine(Offset(0, 560), Offset(15, 560), paint2);
 
     marks('520', Offset(-192.5, 14.0), canvas, 14.0);
     marks('480', Offset(-192.5, 60), canvas, 14.0);
@@ -681,16 +682,16 @@ class PathPainter extends CustomPainter {
     marks('40', Offset(-192.5, 500), canvas, 14.0);
     marks('0', Offset(-192.5, 540), canvas, 14.0);
 
-    marks('-180', Offset(-180, 585), canvas, 14.0);
-    marks('-140', Offset(-140, 585), canvas, 14.0);
-    marks('-100', Offset(-100, 585), canvas, 14.0);
-    marks('-60', Offset(-60, 585), canvas, 14.0);
-    marks('-20', Offset(-20, 585), canvas, 14.0);
-    marks('20', Offset(20, 585), canvas, 14.0);
-    marks('60', Offset(60, 585), canvas, 14.0);
-    marks('100', Offset(100, 585), canvas, 14.0);
-    marks('140', Offset(140, 585), canvas, 14.0);
-    marks('180', Offset(180, 585), canvas, 14.0);
+    marks('-180', Offset(10, 585), canvas, 14.0);
+    marks('-140', Offset(50, 585), canvas, 14.0);
+    marks('-100', Offset(90, 585), canvas, 14.0);
+    marks('-60', Offset(130, 585), canvas, 14.0);
+    marks('-20', Offset(170, 585), canvas, 14.0);
+    marks('20', Offset(210, 585), canvas, 14.0);
+    marks('60', Offset(250, 585), canvas, 14.0);
+    marks('100', Offset(290, 585), canvas, 14.0);
+    marks('140', Offset(330, 585), canvas, 14.0);
+    marks('180', Offset(370, 585), canvas, 14.0);
     // TextSpan span =
     //     TextSpan(style: TextStyle(color: Colors.grey[600]), text: '100');
     // TextPainter tp = TextPainter(
