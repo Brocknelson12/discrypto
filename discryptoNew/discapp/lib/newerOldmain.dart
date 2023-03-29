@@ -4,10 +4,38 @@ import '../my_flutter_app_icons.dart' as bagIcon;
 import '../disc.dart' as discIcon;
 import 'package:intl/intl.dart';
 import 'dart:ui' as ui;
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'course_selection_page.dart';
-// import 'social.dart';
-import 'plan.dart';
+
+class Post {
+  final String userName;
+  final String text;
+  final String? courseName;
+  final DateTime dateTime;
+
+  Post({
+    required this.userName,
+    required this.text,
+    this.courseName,
+    required this.dateTime,
+  });
+}
+
+class Profile {
+  final String name;
+  final String favoriteCourse;
+  final double handicap;
+  final String profilePicture;
+  final List<Disc> discInventory;
+  final Map<String, List<Disc>> bagInventory;
+
+  Profile({
+    required this.name,
+    required this.favoriteCourse,
+    required this.handicap,
+    required this.profilePicture,
+    required this.discInventory,
+    required this.bagInventory,
+  });
+}
 
 class Disc {
   final String name;
@@ -35,6 +63,130 @@ class Disc {
   });
 }
 
+Profile userProfile = Profile(
+  name: 'Brock',
+  favoriteCourse: 'Cedar Hill',
+  handicap: 4.3,
+  profilePicture: 'https://via.placeholder.com/150',
+  discInventory: [
+    Disc(
+      name: 'Aviar',
+      brand: 'Innova',
+      type: 'Putter',
+      speed: 2,
+      glide: 3,
+      turn: 0,
+      fade: 0,
+    ),
+    Disc(
+      name: 'Buzzz',
+      brand: 'Discraft',
+      type: 'Midrange',
+      speed: 5,
+      glide: 4,
+      turn: -1,
+      fade: 1,
+    ),
+    Disc(
+      name: 'FD',
+      brand: 'Discmania',
+      type: 'Fairway Driver',
+      speed: 7,
+      glide: 6,
+      turn: -1,
+      fade: 1,
+    ),
+    Disc(
+      name: 'Destroyer',
+      brand: 'Innova',
+      type: 'Driver',
+      speed: 12,
+      glide: 5,
+      turn: -1,
+      fade: 3,
+    ),
+    Disc(
+      name: 'Enforcer',
+      brand: 'Dynamic Discs',
+      type: 'Driver',
+      speed: 12,
+      glide: 4,
+      turn: 0,
+      fade: 4,
+    ),
+  ],
+  bagInventory: {
+    'Cedar Hill': [
+      Disc(
+        name: 'Aviar',
+        brand: 'Innova',
+        type: 'Putter',
+        speed: 2,
+        glide: 3,
+        turn: 0,
+        fade: 0,
+      ),
+      Disc(
+        name: 'Buzzz',
+        brand: 'Discraft',
+        type: 'Midrange',
+        speed: 5,
+        glide: 4,
+        turn: -1,
+        fade: 1,
+      ),
+      Disc(
+        name: 'FD',
+        brand: 'Discmania',
+        type: 'Fairway Driver',
+        speed: 7,
+        glide: 6,
+        turn: -1,
+        fade: 1,
+      ),
+      Disc(
+        name: 'Destroyer',
+        brand: 'Innova',
+        type: 'Driver',
+        speed: 12,
+        glide: 5,
+        turn: -1,
+        fade: 3,
+      ),
+      Disc(
+        name: 'Enforcer',
+        brand: 'Dynamic Discs',
+        type: 'Driver',
+        speed: 12,
+        glide: 4,
+        turn: 0,
+        fade: 4,
+      ),
+    ],
+  },
+);
+
+List<Post> feedPosts = [
+  Post(
+    userName: 'Brock',
+    text: 'Just got a new disc, a blue Discraft Buzzz!',
+    dateTime: DateTime.now(),
+  ),
+  Post(
+    userName: 'Sarah',
+    text:
+        'Playing a round at Turner Park tomorrow at 2pm, anyone want to join?',
+    courseName: 'Turner Park',
+    dateTime: DateTime.now().add(Duration(days: 1)),
+  ),
+  Post(
+    userName: 'Chris',
+    text:
+        'Lost a yellow Innova Destroyer on hole 5 at Cedar Hill, if anyone finds it let me know!',
+    courseName: 'Cedar Hill',
+    dateTime: DateTime.now().subtract(Duration(days: 3)),
+  ),
+];
 Map<String, List<Map<String, Object>>> discs = {
   "discs": [
     {
@@ -490,11 +642,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   final List<Widget> _pages = [
     const FlightsPage(),
-    DiscGolfBagPageV2(),
+    DiscGolfBagPage(),
     RoundsPage(),
-    PlanPage(),
-    // FeedPage(feedPosts: feedPosts, userProfile: userProfile),
-    CourseSelectionPage()
+    FeedPage(feedPosts: feedPosts, userProfile: userProfile)
   ];
 
   @override
@@ -521,10 +671,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
             icon: Icon(Icons.score),
             label: 'Social',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.golf_course),
-            label: 'Course',
           ),
         ],
         onTap: (index) {
@@ -738,20 +884,18 @@ class DiscGolfBagPage extends StatefulWidget {
   _DiscGolfBagPageState createState() => _DiscGolfBagPageState();
 }
 
-// class Discs {
-//   String name = '';
-//   String type = '';
-//   String manufacturer = '';
-//   bool isFavorite = false;
-//   String imageUrl = 'https://via.placeholder.com/100x10/FF0000/000000';
+class Discs {
+  String name = '';
+  String type = '';
+  String manufacturer = '';
+  bool isFavorite = false;
 
-//   Discs(
-//       {required String name,
-//       required String type,
-//       required String manufacturer,
-//       required bool isFavorite,
-//       imageUrl});
-// }
+  Discs(
+      {required String name,
+      required String type,
+      required String manufacturer,
+      required bool isFavorite});
+}
 
 class DiscBag {
   String name;
@@ -767,286 +911,37 @@ class Course {
   Course(this.name, this.discBag);
 }
 
-// List<Discs> _discs = [
-//   Discs(
-//     name: 'Aviar',
-//     type: 'Putters',
-//     manufacturer: 'Innova',
-//     isFavorite: false,
-//   ),
-//   Discs(
-//       name: 'Roc',
-//       type: 'Midranges',
-//       manufacturer: 'Innova',
-//       isFavorite: false),
-//   Discs(
-//       name: 'Leopard',
-//       type: 'Fairway Drivers',
-//       manufacturer: 'Innova',
-//       isFavorite: false),
-//   Discs(
-//       name: 'Thunderbird',
-//       type: 'Drivers',
-//       manufacturer: 'Innova',
-//       isFavorite: false),
-//   Discs(
-//       name: 'Destroyer',
-//       type: 'Drivers',
-//       manufacturer: 'Innova',
-//       isFavorite: false),
-// ];
-
-class Discs {
-  String name = '';
-  String type = '';
-  String manufacturer = '';
-  bool isFavorite = false;
-  Color discColor;
-
+List<Discs> _discs = [
   Discs(
-      {required this.name,
-      required this.type,
-      required this.manufacturer,
-      required this.isFavorite,
-      required this.discColor});
-}
-
-class DiscGolfBagPageV2 extends StatefulWidget {
-  @override
-  _DiscGolfBagPageV2State createState() => _DiscGolfBagPageV2State();
-}
-
-class _DiscGolfBagPageV2State extends State<DiscGolfBagPageV2> {
-  CarouselController _carouselController = CarouselController();
-  List<Discs> _discList = [
-    Discs(
-        name: 'Aviar',
-        type: 'Putters',
-        manufacturer: 'Innova',
-        isFavorite: false,
-        discColor: Colors.red),
-    Discs(
-        name: 'Roc',
-        type: 'Midranges',
-        manufacturer: 'Innova',
-        isFavorite: false,
-        discColor: Colors.green),
-    Discs(
-        name: 'Buzz',
-        type: 'Midranges',
-        manufacturer: 'Innova',
-        isFavorite: false,
-        discColor: Colors.black),
-    Discs(
-        name: 'Destroyer',
-        type: 'Midranges',
-        manufacturer: 'Innova',
-        isFavorite: false,
-        discColor: Colors.orange),
-    Discs(
-        name: 'Rive',
-        type: 'Midranges',
-        manufacturer: 'Innova',
-        isFavorite: false,
-        discColor: Colors.purple),
-    Discs(
-        name: 'Destroyer',
-        type: 'Midranges',
-        manufacturer: 'Innova',
-        isFavorite: false,
-        discColor: Colors.pink),
-    // Add more disc instances here
-  ];
-
-  String _currentDiscName = '';
-
-  @override
-  void initState() {
-    super.initState();
-    _currentDiscName = _discList[0].name;
-  }
-
-  void _showAddDiscDialog() {
-    final nameController = TextEditingController();
-    final manufacturerController = TextEditingController();
-    Color pickerColor = Colors.red;
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Add Disc'),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                    hintText: 'Name',
-                  ),
-                ),
-                TextField(
-                  controller: manufacturerController,
-                  decoration: InputDecoration(
-                    hintText: 'Manufacturer',
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: ColorPicker(
-                    pickerColor: pickerColor,
-                    onColorChanged: (Color color) {
-                      pickerColor = color;
-                    },
-                    // enableLabel: true,
-                    pickerAreaHeightPercent: 0.8,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                String name = nameController.text;
-                String manufacturer = manufacturerController.text;
-
-                Discs newDisc = Discs(
-                  name: name,
-                  type: 'Custom',
-                  manufacturer: manufacturer,
-                  isFavorite: false,
-                  discColor: pickerColor,
-                );
-
-                setState(() {
-                  _discList.add(newDisc);
-                });
-
-                Navigator.of(context).pop();
-              },
-              child: Text('Add'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_currentDiscName),
-        centerTitle: true,
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: CarouselSlider.builder(
-              itemCount: _discList.length,
-              itemBuilder: (BuildContext context, int index, int realIndex) {
-                final disc = _discList[index];
-                return Container(
-                  height: 40.0,
-                  margin: EdgeInsets.symmetric(
-                    vertical: 0.2,
-                    horizontal: 5.0,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.0),
-                    color: disc.discColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      disc.name,
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                );
-              },
-              carouselController: _carouselController,
-              options: CarouselOptions(
-                enlargeCenterPage: true,
-                scrollDirection: Axis.vertical,
-                viewportFraction: 0.06,
-                onPageChanged: (index, reason) {
-                  setState(() {
-                    _currentDiscName = _discList[index].name;
-                  });
-                },
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ElevatedButton(onPressed: () {}, child: Text('Putters')),
-                  ElevatedButton(onPressed: () {}, child: Text('Drivers')),
-                  ElevatedButton(onPressed: () {}, child: Text('Midranges')),
-                  ElevatedButton(onPressed: () {}, child: Text('Fairway')),
-                  ElevatedButton(onPressed: () {}, child: Text('Utility')),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: ElevatedButton(
-              onPressed: () {
-                _showAddDiscDialog();
-              },
-              child: Text('Add Disc'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+    name: 'Aviar',
+    type: 'Putters',
+    manufacturer: 'Innova',
+    isFavorite: false,
+  ),
+  Discs(
+      name: 'Roc',
+      type: 'Midranges',
+      manufacturer: 'Innova',
+      isFavorite: false),
+  Discs(
+      name: 'Leopard',
+      type: 'Fairway Drivers',
+      manufacturer: 'Innova',
+      isFavorite: false),
+  Discs(
+      name: 'Thunderbird',
+      type: 'Drivers',
+      manufacturer: 'Innova',
+      isFavorite: false),
+  Discs(
+      name: 'Destroyer',
+      type: 'Drivers',
+      manufacturer: 'Innova',
+      isFavorite: false),
+];
 
 class _DiscGolfBagPageState extends State<DiscGolfBagPage> {
   List<Discs> _discList = [];
-
-  Widget buildDisc(Discs disc, int index) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey.shade300,
-        borderRadius: BorderRadius.circular(100),
-      ),
-      margin: EdgeInsets.only(left: 10, right: 10, bottom: index == 0 ? 10 : 0),
-      child: ListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-        title: Text(disc.name),
-        subtitle: Text('${disc.type} - ${disc.manufacturer}'),
-        trailing: IconButton(
-          icon: Icon(
-            disc.isFavorite ? Icons.favorite : Icons.favorite_border,
-            color: disc.isFavorite ? Colors.red : null,
-          ),
-          onPressed: () {
-            // Handle disc favorite toggle here
-          },
-        ),
-      ),
-    );
-  }
 
   void _showAddDialog() {
     final _nameController = TextEditingController();
@@ -1095,11 +990,11 @@ class _DiscGolfBagPageState extends State<DiscGolfBagPage> {
                 setState(() {
                   _discList.add(
                     Discs(
-                        name: _nameController.text,
-                        type: _typeController.text,
-                        manufacturer: 'Unknown',
-                        isFavorite: false,
-                        discColor: Colors.red),
+                      name: _nameController.text,
+                      type: _typeController.text,
+                      manufacturer: 'Unknown',
+                      isFavorite: false,
+                    ),
                   );
                 });
                 Navigator.of(context).pop();
@@ -1118,57 +1013,86 @@ class _DiscGolfBagPageState extends State<DiscGolfBagPage> {
       appBar: AppBar(
         title: Text('Disc Golf Bag'),
       ),
-      body: Stack(
-        children: _discList.asMap().entries.map((entry) {
-          int index = entry.key;
-          Discs disc = entry.value;
-          return Positioned(
-            top: 20.0 * index,
-            left: 0,
-            right: 0,
-            child: buildDisc(disc, index),
-          );
-        }).toList(),
+      body: ListView.builder(
+        itemCount: _discList.length,
+        itemBuilder: (context, index) {
+          return DiscWidget(disc: _discList[index]);
+        },
       ),
-      floatingActionButton: Positioned(
-        bottom: 16,
-        right: 16,
-        child: FloatingActionButton(
-          onPressed: _showAddDialog,
-          tooltip: 'Add Disc',
-          child: Icon(Icons.add),
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _showAddDialog,
+        tooltip: 'Add Disc',
+        child: Icon(Icons.add),
       ),
     );
   }
 }
 
-class DiscWidget extends StatelessWidget {
+class DiscWidget extends StatefulWidget {
   final Discs disc;
 
   const DiscWidget({Key? key, required this.disc}) : super(key: key);
 
   @override
+  _DiscWidgetState createState() => _DiscWidgetState();
+}
+
+class _DiscWidgetState extends State<DiscWidget> {
+  bool _isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavorite = widget.disc.isFavorite;
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(8.0),
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: ListTile(
-          leading: CircleAvatar(
-            child: Text(disc.name.substring(0, 1).toUpperCase()),
-          ),
-          title: Text(disc.name),
-          subtitle: Text('${disc.type} - ${disc.manufacturer}'),
-          trailing: IconButton(
-            icon: Icon(
-              disc.isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: disc.isFavorite ? Colors.red : null,
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _isFavorite = !_isFavorite;
+          widget.disc.isFavorite = _isFavorite;
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        height: 50,
+        decoration: BoxDecoration(
+          color: Colors.grey[900],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              padding: EdgeInsets.all(10.0),
+              child: Text(
+                widget.disc.name,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-            onPressed: () {
-              // Handle disc favorite toggle here
-            },
-          ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  _isFavorite = !_isFavorite;
+                  widget.disc.isFavorite = _isFavorite;
+                });
+              },
+              icon: Icon(
+                _isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: _isFavorite ? Colors.red : Colors.white,
+                size: 30.0,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -2122,3 +2046,276 @@ class _ScorePageState extends State<ScorePage> {
 //     );
 //   }
 // }
+
+class ProfilePage extends StatelessWidget {
+  final Profile profile;
+
+  ProfilePage({required this.profile});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(profile.profilePicture),
+                radius: 75,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              profile.name,
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              'Favorite Course: ${profile.favoriteCourse}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              'Handicap: ${profile.handicap}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: profile.discInventory.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  leading: Icon(Icons.sports_golf),
+                  title: Text(
+                      '${profile.discInventory[index].brand} ${profile.discInventory[index].name}'),
+                  subtitle: Text(
+                      'Color: ${profile.discInventory[index].color ?? "Unknown"}'),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      // Handle deleting the disc from the inventory
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class NewPostPage extends StatefulWidget {
+  final Profile userProfile;
+  final List<Post> feedPosts;
+
+  NewPostPage({required this.userProfile, required this.feedPosts});
+
+  @override
+  _NewPostPageState createState() => _NewPostPageState();
+}
+
+class _NewPostPageState extends State<NewPostPage> {
+  String _postText = '';
+  String? _courseName;
+  bool _isSaving = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('New Post'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextField(
+                decoration: InputDecoration(hintText: 'Enter post text'),
+                onChanged: (value) {
+                  _postText = value;
+                },
+              ),
+              SizedBox(height: 16.0),
+              DropdownButtonFormField<String>(
+                value: _courseName,
+                items: [
+                  DropdownMenuItem(
+                    child: Text('Cedar Hill'),
+                    value: 'Cedar Hill',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Turner Park'),
+                    value: 'Turner Park',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Harry Myers'),
+                    value: 'Harry Myers',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Z Boaz'),
+                    value: 'Z Boaz',
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    _courseName = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  hintText: 'Select course (optional)',
+                  contentPadding: EdgeInsets.fromLTRB(12, 12, 0, 0),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                child:
+                    _isSaving ? CircularProgressIndicator() : Text('Save Post'),
+                onPressed: _isSaving
+                    ? null
+                    : () async {
+                        setState(() {
+                          _isSaving = true;
+                        });
+
+                        await Future.delayed(Duration(seconds: 2));
+
+                        widget.feedPosts.add(
+                          Post(
+                            userName: widget.userProfile.name,
+                            text: _postText,
+                            courseName: _courseName,
+                            dateTime: DateTime.now(),
+                          ),
+                        );
+
+                        setState(() {
+                          _isSaving = false;
+                        });
+
+                        Navigator.of(context).pop();
+                      },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FeedPageState extends State<FeedPage> {
+  List<Post> _posts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _posts = widget.feedPosts;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Disc Golf Social Feed'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(profile: userProfile),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: ListView.builder(
+        itemCount: _posts.length + 1,
+        itemBuilder: (BuildContext context, int index) {
+          if (index == 0) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NewPostPage(
+                        feedPosts: feedPosts,
+                        userProfile: userProfile,
+                      ),
+                    ),
+                  ).then((value) {
+                    if (value != null) {
+                      setState(() {
+                        _posts.add(value);
+                      });
+                    }
+                  });
+                },
+                child: Text('New Post'),
+              ),
+            );
+          }
+          index -= 1;
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${_posts[index].userName} - ${_formatDateTime(_posts[index].dateTime)}',
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  _posts[index].text,
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                SizedBox(height: 8.0),
+                if (_posts[index].courseName != null)
+                  Text(
+                    'Course: ${_posts[index].courseName}',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    final DateFormat formatter = DateFormat('MMMM dd, yyyy - h:mm a');
+    return formatter.format(dateTime);
+  }
+}
+
+class FeedPage extends StatefulWidget {
+  final Profile userProfile;
+  final List<Post> feedPosts;
+
+  FeedPage({required this.userProfile, required this.feedPosts});
+
+  @override
+  _FeedPageState createState() => _FeedPageState();
+}
